@@ -1,0 +1,51 @@
+
+.review{
+     min-height: 15rem;
+     max-height: 20rem;
+     border: 1px solid #9D9C9C;
+     padding: 1rem 0.5rem;
+     margin: 1rem;
+}
+
+.profile{
+     text-align: center;
+     margin-top: 0.5rem;
+
+}
+
+.rating, .review_name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile img{
+     width: 4rem;
+     height: 4rem;
+     border-radius: 50%;
+}
+
+.review_description{
+     margin-top: 0.5rem;
+     width: 28rem;
+}
+
+.review_description p{
+        color: #6E6B6B;
+}
+
+
+@media screen and (max-width: 600px) {
+
+     .review{
+          min-height: 10rem;
+          max-height: 14rem;
+          padding: 0.5rem 0.5rem;
+          margin: 0.6rem;
+     }
+
+     .review_description{
+          width: 20rem;
+     }
+     
+}

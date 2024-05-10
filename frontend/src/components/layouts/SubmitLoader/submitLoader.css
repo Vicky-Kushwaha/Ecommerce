@@ -1,0 +1,29 @@
+.submitloading {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+    z-index: 2;
+  }
+  
+  .submitloading > div {
+    width: 10vmax;
+    height: 10vmax;
+    border-bottom: 5px solid white;
+  
+    border-radius: 50%;
+  
+    animation: loadingRotate 2s linear infinite;
+  }
+  
+  @keyframes loadingRotate {
+    to {
+      transform: rotateZ(-360deg);
+    }
+  }
+  

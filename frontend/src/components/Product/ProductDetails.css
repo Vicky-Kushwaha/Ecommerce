@@ -1,0 +1,308 @@
+.productDetail_container{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+     gap: 2rem;
+	width: 80vw;
+	margin: auto;
+	min-height: 80vh;
+}
+
+.carousel{
+     width: 25rem;
+     margin: 0.5rem;
+ }
+
+ .carousel img{
+ 	width: 100%;
+ 	height: 28rem;
+	object-fit: contain	;
+ }
+
+ .product_details{
+ 	display: flex;
+ 	width: 25rem;
+ 	flex-direction: column;
+ 	margin: 0.5rem;
+ 	padding: 0.5rem;
+ }
+
+ .product_details div{
+ 	margin: 0.4rem 0;
+ }
+
+ .product_id{
+ 	font-size: 0.8rem;
+ 	padding-bottom: 0.3rem ;
+ 	border-bottom: 0.5px solid #9D9C9C;
+ 	color: #9D9C9C;
+ }
+
+ .product_rating{
+ 	display: flex;
+ 	align-items: center;
+  	border-bottom: 0.5px solid #9D9C9C;	
+ }
+
+ .product_rating span{
+ 	font-size: 0.8rem;
+ }
+
+ .redColor{
+     color: red;
+ }
+
+ .greenColor{
+     color: green;
+ }
+
+ .addToCart{
+ 	display: flex;
+ 	align-items: center;
+ 	gap: 1rem;
+ 	border-bottom: 0.5px solid #9D9C9C;	
+ }
+
+ .inc_dec_item{
+ 	display: flex;
+ 	align-items: center;
+
+ }
+
+ .inc_dec_item button{
+  border: none;
+  background-color: rgba(0, 0, 0, 0.616);
+  width: 1.6rem;
+  height: 2rem;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+ }
+
+ .inc_dec_item div{
+ 	width: 1.7rem;
+ 	height: 2rem;
+ 	display:flex;
+ 	justify-content: center;
+ 	align-items: center;
+ }
+
+ .addToCart_btn{
+ 	border: none;
+ 	width: 8rem;
+ 	height: 2rem;
+ 	border-radius: 30px;
+ 	background-color: tomato;
+ 	color: white;
+ 	cursor: pointer;
+ }
+
+ .status div{
+  display: flex;
+  gap: 0.8rem;
+  border-bottom: 0.5px solid #9D9C9C;
+  padding-bottom: 1rem;
+  align-items: center;
+ }
+
+
+ .status span{
+ 	color: #848080;	
+ 	font-weight: 600;
+ }
+
+ .status p{
+ 	font-weight: 900;
+ }
+
+ .status div button{
+	background-color: blue;
+ }
+
+ .description p{
+     color: #534F4F;
+	 text-transform: capitalize;
+ }
+
+  .submitReview{
+     border: none;
+     margin: 1rem;
+     width: 8rem;
+     height: 2rem;
+     border-radius: 30px;
+     background-color: tomato;
+     color: white;
+     cursor: pointer;
+ }
+
+ .review_heading{
+     margin-top: 5rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .review_heading h1{
+     border-bottom: 2px solid #9D9C9C;  
+ }
+
+
+ .review_container{
+     overflow: scroll;
+     display: flex;
+     gap: 1rem;
+ }
+
+ .review_container::-webkit-scrollbar{
+    display: none;
+ }
+
+ .categoryHeading{
+	padding: 0.2rem 0.4rem;
+	margin: 3rem 0.2rem 1rem 0.6rem ;
+	width: 9.5rem;
+	border-bottom: 2px solid #9D9C9C; 
+ }
+
+ .categoryProduct{
+	display: flex;
+	overflow: auto;
+ }
+
+ .categoryProduct::-webkit-scrollbar{
+	display: none;
+ }
+
+ .modal_container{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+ }
+
+ .modal_box{
+     width: 35vw;
+	 background-color: white;
+	 border-radius: 10px;
+ }
+
+ .modal_header{
+	background-color: rgb(14, 13, 13);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	color: white;
+	position: relative;
+	border-radius: 10px 10px 0 0;
+ }
+
+ .modal_header h3{
+	font: 400 1.4rem "Roboto";
+	font-style: italic;
+ }
+
+ .modal_header button{
+	padding: 0.4rem 0.6rem;
+	border: none;
+	margin: 0.2rem;
+	background-color: red;
+	color: white;
+	border-radius: 4px;
+	position: absolute;
+	right: 4px;
+ }
+
+ .modal_header button:hover{
+	background-color: rgb(212, 51, 51);
+	cursor: pointer;
+ }
+
+ .modal_box form{
+	padding: 0.5rem;
+
+ }
+
+ .modal_box form div{
+	margin: 0.3rem;
+ }
+
+ .modal_box form textarea{
+	width: 100%;
+	padding: 0.3rem;
+	outline: none;
+ }
+
+ .submit{
+	text-align: center;
+ }
+
+ .submit button{
+	border: none;
+	background-color: tomato;
+	color: white;
+	font: 300 0.8rem "Roboto";
+	padding: 0.3rem;
+	border-radius: 5px;
+ }
+
+ .submit button:hover{
+	cursor: pointer;
+	background-color: rgb(241, 77, 49);
+ }
+
+ .noReviews {
+	font: 400 1.2rem "Gill Sans";
+	text-align: center;
+	color: rgba(0, 0, 0, 0.548);
+	margin: 1rem;
+  }
+
+  @media screen and (max-width: 600px) {
+
+	.productDetail_container{
+		margin-top: 0.4rem;
+		width: 100vw;
+		gap: 0.5rem;
+	}
+	
+	.carousel{
+		 width: 100%;
+	 }
+	
+	 .carousel img{
+		 height: 20rem;
+	 }
+	
+	 .review_heading{
+		 margin-top: 1rem;
+
+	 }
+	
+	 .review_heading h1{
+		 font-size: 1.2rem;  
+	 }
+	
+	
+	 .review_container{
+		 gap: 0.5rem;
+	 }
+
+	 .categoryHeading{
+		margin: 0rem 0.2rem 1rem 0.6rem ;
+		width: 9.6rem;
+		font-size: 1rem;
+	 }
+	
+	
+	 .modal_box{
+		 width: 90vw;
+		 height: 34vh;
+	 }
+
+  }

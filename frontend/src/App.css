@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	padding-top: 9.2vh;
+}
+
+
+body::-webkit-scrollbar{
+	display: none;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+.greenColor{
+	color: green!important;
+}
+
+.redColor{
+	color: red!important;
+}
+
+@media screen and (max-width: 600px){
+	body{
+		padding-top: 28.4vw;
+	}
+}

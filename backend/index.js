@@ -16,17 +16,9 @@ const path = require("path");
 
 const port = process.env.PORT || 5000;
 
-const corsOption = {
-	origin: '*',
-	credentials: true,
-	allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
-	methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
-	optionsSuccessStatus: 200  
-  }
-
 app.use(express.static(path.join(__dirname,"../frontend/build")))  
 app.use(express.json());
-app.use(cors(corsOption));
+app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(fileupload());
@@ -41,7 +33,7 @@ cloudinary.config({
 	api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-app.get("/",(req,res) => {
+app.get("*",(req,res) => {
 	res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"));
 });
 

@@ -152,43 +152,43 @@ function App() {
           <Route
             exact
             path="/admin/products"
-            element={<ProtectedRoute Component={ProductList} />}
+            element={<ProtectedRoute isAdmin={true} Component={ProductList} />}
           />
 
           <Route
             exact
             path="/admin/newproduct"
-            element={<ProtectedRoute Component={NewProduct} />}
+            element={<ProtectedRoute isAdmin={true} Component={NewProduct} />}
           />
 
           <Route
             exact
             path="/admin/product/:id"
-            element={<ProtectedRoute Component={UpdateProduct} />}
+            element={<ProtectedRoute isAdmin={true} Component={UpdateProduct} />}
           />
 
           <Route
             exact
             path="/admin/orders"
-            element={<ProtectedRoute Component={OrderList} />}
+            element={<ProtectedRoute isAdmin={true} Component={OrderList} />}
           />
 
           <Route
             exact
             path="/admin/order/:id"
-            element={<ProtectedRoute Component={ProcessOrder} />}
+            element={<ProtectedRoute isAdmin={true} Component={ProcessOrder} />}
           />
 
           <Route
             exact
             path="/admin/users"
-            element={<ProtectedRoute Component={UsersList} />}
+            element={<ProtectedRoute isAdmin={true} Component={UsersList} />}
           />
 
           <Route
             exact
             path="/admin/user/:id"
-            element={<ProtectedRoute Component={UpdateUser} />}
+            element={<ProtectedRoute isAdmin={true} Component={UpdateUser} />}
           />
 
           <Route

@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import { useSelector } from "react-redux";
 import { useNavigate} from "react-router-dom";
 import Loading from "../layouts/Loader/Loader";
@@ -8,7 +7,7 @@ const ProtectedRoute = ({ isAdmin,Component, ...rest }) => {
 
   const navigate = useNavigate();
 
-  useEffect(()=> {
+
 
     if(loading === false){
             if (isAuthenticated === false) {
@@ -17,12 +16,11 @@ const ProtectedRoute = ({ isAdmin,Component, ...rest }) => {
 
             if (isAdmin === true && user.role !== "admin") {
               return navigate(-1);
-            }      
+            } 
+            
+        return <>{loading ? <Loading /> : (isAuthenticated === true) && <Component {...rest} />}</>;
     }
 
-  },[loading,isAuthenticated,user,navigate, isAdmin]);
-
-  return <>{loading ? <Loading /> : (isAuthenticated === true) && <Component {...rest} />}</>;
 };
 
 export default ProtectedRoute;

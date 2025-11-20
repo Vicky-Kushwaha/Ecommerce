@@ -16,29 +16,29 @@ const path = require("path");
 
 const port = process.env.PORT || 5000;
 
-app.use(express.static(path.join(__dirname,"../frontend/build")))  
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileupload());
-app.use("/api/auth",productRouter);
-app.use("/api/auth",userRouter);
-app.use("/api/auth",orderRouter);
-app.use("/api/auth",paymentRouter);
+app.use("/api/auth", productRouter);
+app.use("/api/auth", userRouter);
+app.use("/api/auth", orderRouter);
+app.use("/api/auth", paymentRouter);
 
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_NAME,
-	api_key: process.env.CLOUDINARY_API_KEY,
-	api_secret: process.env.CLOUDINARY_API_SECRET
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.get("*",(req,res) => {
-	res.sendFile(path.resolve(__dirname,"../frontend/build/index.html"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
 
-connection().then(()=>{
-	app.listen(port,()=>{
-		console.log(`app listening on port: ${port}`);
-	});
+connection().then(() => {
+  app.listen(port, () => {
+    console.log(`app listening on port: ${port}`);
+  });
 });

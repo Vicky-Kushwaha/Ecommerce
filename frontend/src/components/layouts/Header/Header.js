@@ -94,7 +94,7 @@ const Header = () => {
 
     if (keyword.trim()) {
       navigate(`/products/${keyword}`);
-    } 
+    }
     setRecommend(false);
     setKeyword("");
     input.current.blur();
@@ -128,17 +128,20 @@ const Header = () => {
             {recommend && (
               <div className="searchRecommend">
                 {recommendData &&
-                  recommendData.map((elem, index) => (
-                   index <= 9 && (<p
-                      className={
-                        index === currentIndex ? "recommendActive" : ""
-                      }
-                      onClick={() => handleRecommendSearch(elem)}
-                      key={index}
-                    >
-                      {elem}
-                    </p>)
-                  ))}
+                  recommendData.map(
+                    (elem, index) =>
+                      index <= 9 && (
+                        <p
+                          className={
+                            index === currentIndex ? "recommendActive" : ""
+                          }
+                          onClick={() => handleRecommendSearch(elem)}
+                          key={index}
+                        >
+                          {elem}
+                        </p>
+                      )
+                  )}
               </div>
             )}
           </form>

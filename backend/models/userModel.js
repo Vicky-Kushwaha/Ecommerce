@@ -23,7 +23,6 @@ const userSchema = new Schema({
   	type: String,
   	required: [true,"Please enter your password"],
   	minLength: [8,"Passowrd should be greater than 8 characters"],
-
   },
   avatar:{
   	public_id: {

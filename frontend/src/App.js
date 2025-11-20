@@ -56,9 +56,7 @@ function App() {
   });
 
   useEffect(() => {
-
-      dispatch(loadUser());
-
+    dispatch(loadUser());
   }, []);
 
   return (
@@ -164,7 +162,9 @@ function App() {
           <Route
             exact
             path="/admin/product/:id"
-            element={<ProtectedRoute isAdmin={true} Component={UpdateProduct} />}
+            element={
+              <ProtectedRoute isAdmin={true} Component={UpdateProduct} />
+            }
           />
 
           <Route

@@ -62,7 +62,7 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    console.log(userData)
+    console.log(userData);
 
     const { data } = await axios.post(`/api/auth/register`, userData);
 
@@ -147,7 +147,11 @@ export const forgotPassword = (email) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`/api/auth/password/forget`, email, config);
+    const { data } = await axios.post(
+      `/api/auth/password/forget`,
+      email,
+      config
+    );
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {

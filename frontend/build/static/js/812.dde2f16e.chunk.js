@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[812],{812:(e,n,s)=>{s.r(n),s.d(n,{default:()=>d});var t=s(3003),r=s(3216),o=s(3127),a=s(579);const d=e=>{let{Component:n,isAdmin:s}=e;const{loading:d,isAuthenticated:l,user:u}=(0,t.d4)((e=>e.user));return d?(0,a.jsx)(o.A,{}):l?!0===s&&"admin"!==u.role?(0,a.jsx)(r.C5,{to:"/",replace:!0}):(0,a.jsx)(n,{}):(0,a.jsx)(r.C5,{to:"/login",replace:!0})}}}]);
+//# sourceMappingURL=812.dde2f16e.chunk.js.map

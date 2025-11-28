@@ -57,9 +57,11 @@ const Home = () => {
               <div
                 className="category-link"
                 key={category}
-                onClick={() => navigate(`/products/${category}`) }
+                onClick={() => navigate(`/products/${category}`)}
               >
-                {images && <img src={`${images[index]}`} alt="pic" />}
+                {images && (
+                  <img src={`${images[index]}`} alt="pic" loading="lazy" />
+                )}
                 <p>{category}</p>
               </div>
             ))}
@@ -72,7 +74,7 @@ const Home = () => {
                     zIndex: 1,
                     marginTop: "-33px",
                     position: "relative",
-                    paddingBottom: "10px"
+                    paddingBottom: "10px",
                   },
                 }}
               >
@@ -81,28 +83,28 @@ const Home = () => {
                     media="(max-width: 600px)"
                     srcSet="images/banner6.jpg"
                   />
-                  <img src="images/banner1.webp" alt="banner1" />
+                  <img src="images/banner1.webp" alt="banner1" loading="lazy" />
                 </picture>
                 <picture>
                   <source
                     media="(max-width: 600px)"
                     srcSet="images/banner7.png"
                   />
-                  <img src="images/banner2.webp" alt="banner2" />
+                  <img src="images/banner2.webp" alt="banner2" loading="lazy" />
                 </picture>
                 <picture>
                   <source
                     media="(max-width: 600px)"
                     srcSet="images/banner8.png"
                   />
-                  <img src="images/banner3.webp" alt="banner3" />
+                  <img src="images/banner3.webp" alt="banner3" loading="lazy" />
                 </picture>
                 <picture>
                   <source
                     media="(max-width: 600px)"
                     srcSet="images/banner9.png"
                   />
-                  <img src="images/banner4.webp" alt="banner4" />
+                  <img src="images/banner4.webp" alt="banner4" loading="lazy" />
                 </picture>
               </Carousel>
             </div>

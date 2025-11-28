@@ -2,7 +2,7 @@ import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AccountMenu from "./userOption";
 import { useSelector } from "react-redux";
@@ -21,6 +21,9 @@ const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
 
+  // -------------------------------
+  // CLOSE DROPDOWN ON OUTSIDE CLICK
+  // -------------------------------
   window.addEventListener("click", (event) => {
     if (
       event.target.className !== input.current.className &&
@@ -31,14 +34,45 @@ const Header = () => {
     }
   });
 
+  // -------------------------------
+  // UNIQUE PRODUCT NAME FUNCTION
+  // -------------------------------
   const uniqueElement = (array) => {
-    const data = array.map((elem) => {
-      return elem.name;
-    });
-
+    const data = array.map((elem) => elem.name);
     return [...new Set(data)];
   };
 
+  // ----------------------------------------------
+  // BASIC DEBOUNCE FUNCTION (REUSABLE)
+  // ----------------------------------------------
+  const debounce = (func, delay) => {
+    let timer;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  // ----------------------------------------------
+  // API CALL WITH DEBOUNCE (USED BELOW)
+  // ----------------------------------------------
+  const fetchSearchData = useCallback(
+    debounce(async (searchKeyword) => {
+      try {
+        const { data } = await axios.get(
+          `/api/auth/products?keyword=${searchKeyword}&page=1&price[gte]=0&price[lte]=250000&ratings[gte]=0`
+        );
+        setRecommendData(uniqueElement(data.products));
+      } catch (err) {
+        return err;
+      }
+    }, 400),
+    [] // initialized once
+  );
+
+  // -------------------------------
+  // ON INPUT CLICK FETCH INITIAL SUGGESTIONS
+  // -------------------------------
   const onInputClick = async () => {
     try {
       const { data } = await axios.get(
@@ -52,20 +86,23 @@ const Header = () => {
     }
   };
 
-  const handleChange = async (e) => {
-    setKeyword(e.target.value);
+  // -------------------------------
+  // HANDLE CHANGE WITH DEBOUNCE
+  // -------------------------------
+  const handleChange = (e) => {
+    let value = e.target.value;
+    setKeyword(value);
 
-    try {
-      const { data } = await axios.get(
-        `/api/auth/products?keyword=${keyword}&page=1&price[gte]=0&price[lte]=250000&ratings[gte]=0`
-      );
+    if (value.trim().length === 0) return;
 
-      setRecommendData(uniqueElement(data.products));
-    } catch (err) {
-      return err;
-    }
+    setRecommend(true);
+
+    fetchSearchData(value); // debounced API call
   };
 
+  // --------------------------------
+  // KEYBOARD HANDLING
+  // --------------------------------
   const handleKeyDown = (event) => {
     if (event.key === "ArrowDown" && currentIndex < recommendData.length - 1) {
       setCurrentIndex((prev) => prev + 1);
@@ -108,11 +145,13 @@ const Header = () => {
             <span className="heading">Ecommerce</span>
           </Link>
         </div>
+
         <div className="nav_mid">
           <form onSubmit={searchSubmitHandler}>
             <label htmlFor="search" className="search_label">
               <SearchIcon />
             </label>
+
             <input
               className="search_input"
               id="search"
@@ -125,6 +164,7 @@ const Header = () => {
               onKeyDown={handleKeyDown}
               ref={input}
             />
+
             {recommend && (
               <div className="searchRecommend">
                 {recommendData &&
@@ -146,16 +186,17 @@ const Header = () => {
             )}
           </form>
         </div>
+
         <div className="nav_right">
           <Link to="/cart">
             <div className="icon_container">
               <Badge badgeContent={cartItems.length} color="error">
                 <ShoppingCartOutlinedIcon />
               </Badge>
-
               <p>Cart</p>
             </div>
           </Link>
+
           {isAuthenticated ? (
             <div className="myProfile">
               <AccountMenu user={user} />
